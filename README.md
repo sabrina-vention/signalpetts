@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+# Additional Notes
+
+Owing to the fact that i saw the email later than supposed (completely my fault), i had not time to add additional functionality which i had in mind, so i will list them here:
+
+1) I added cashing for the fetched information on tRPC, so that the data is only fetched once and then stored in the cache, this is to reduce the number of requests made to the API, however
+i had not have time to think through the best way to add i18n (internationalization) to the project, for the seamless transaction between languages. I would have configured i18n-next to handle this, and the proper way to change languages would be through LocaleSwitcher, but for the purpose of this assignment that would have been done through changing URL query to prefered language
+
+2) When it comes to testing, I thought that the proper way to test the application would be end-to-end testing, since addition of tRPC is not something that usually being tested with unit tests
+
+3) Currently the project supports only one language (fr) since the language toggle is not implemented properly, but the project is ready to support multiple languages thanks to the i18n initial configuration that i have added
+
+The reason is took long to come up with the idea for the project is because i had two ideas in mind which i wanted to implement:
+
+first is usage of server side rendering that Nextjs provides
+second is with usage of 'use client' and react-query fetching with 'tanstack-query' package
+
