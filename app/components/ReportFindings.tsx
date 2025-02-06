@@ -59,9 +59,11 @@ interface ReportFindingsProps {
   findings?: Findings;
   isNormal: boolean;
   editable: boolean;
+  locale: string;
 }
 
 const ReportFindings = ({
+  locale,
   findings,
   isNormal,
   editable,
@@ -74,6 +76,7 @@ const ReportFindings = ({
         editable || !editable ? (
           <div key={finding.id} style={styles.smGap4}>
             <ReportFindingWrapper
+              locale={locale}
               finding={finding}
               isNormal={isNormal}
               editable={editable}

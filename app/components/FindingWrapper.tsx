@@ -6,15 +6,17 @@ const ReportFindingWrapper = async ({
   finding,
   isNormal,
   editable,
+  locale
 }: {
   finding: Finding;
   isNormal: boolean;
   editable: boolean;
+  locale: string;
 }): JSX.Element => {
   const caller = appRouter.createCaller({});
   const { translatedText } = await caller.getTranslation({
     data: finding.name,
-    locale: "fr",
+    locale,
   });
 
   return (

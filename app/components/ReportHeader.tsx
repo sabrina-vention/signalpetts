@@ -1,6 +1,6 @@
 import { reportHeader } from "../utils/constants";
 import Image from "next/image";
-import { appRouter } from "../server/trpc";
+import { caller } from "../server/trpc";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 const styles = {
@@ -20,13 +20,12 @@ const styles = {
   },
 };
 
-const ReportHeader = async () => {
-  // using createCaller because app directory Nextjs does not support getServerSideProps
-  const caller = appRouter.createCaller({});
+const ReportHeader = async ({ locale }: { locale: string }) => {
 
+  // using createCaller because app directory Nextjs does not support getServerSideProps
   const { translatedText } = await caller.getTranslation({
     data: reportHeader.secondaryText,
-    locale: "fr",
+    locale:locale,
   });
 
   return (

@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
-import { appRouter } from "../server/trpc";
+import { caller } from "../server/trpc";
 
 interface ReportSectionInterface {
   children?: ReactNode;
@@ -7,6 +7,7 @@ interface ReportSectionInterface {
   secondaryText?: string;
   style?: CSSProperties;
   contentWrapperStyle?: CSSProperties;
+  locale: string;
 }
 
 const styles = {
@@ -30,16 +31,15 @@ const styles = {
 };
 
 const ReportSection = async (props: ReportSectionInterface) => {
-  const { title, children, secondaryText, style, contentWrapperStyle } = props;
-  const caller = appRouter.createCaller({});
+  const { title, children, secondaryText, style, contentWrapperStyle, locale } = props;
 
   const { translatedText } = await caller.getTranslation({
     data: title,
-    locale: "fr",
+    locale,
   });
   const { translatedText: secondary } = await caller.getTranslation({
     data: secondaryText || '',
-    locale: "fr",
+    locale,
   });
   return (
     <div style={{ ...styles.container, ...style }}>

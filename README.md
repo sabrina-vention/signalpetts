@@ -53,3 +53,8 @@ The reason is took long to come up with the idea for the project is because i ha
 first is usage of server side rendering that Nextjs provides
 second is with usage of 'use client' and react-query fetching with 'tanstack-query' package
 
+## UPD
+
+# How to change language: Change URL query from /en to /fr or any prefered language 
+
+I couldn't just leave half-working project, so I added new stuff, please refer to first commit if you wish to see the work that was done during first 5 hours.

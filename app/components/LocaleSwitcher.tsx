@@ -1,6 +1,8 @@
 'use client';
-import { useRouter } from 'next/navigation'
-import { useState } from 'react';
+
+import { useRouter, usePathname } from 'next/navigation';
+import { ChangeEventHandler } from 'react';
+
 
 const styles = {
   container: {
@@ -22,11 +24,13 @@ const styles = {
 };
 
 const LocaleSwitcher = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // Handle change of selection
-  const handleSelectChange = (event: any) => {
-    setSelectedOption(event.target.value);
+
+  const changeLanguage = (event: any) => {
+    const newPathname = `/${event.target.value}${pathname.replace(/^\/(en|fr|ru|es)/, '')}`;
+    router.push(newPathname);
   };
 
   return (
@@ -34,8 +38,8 @@ const LocaleSwitcher = () => {
       <label htmlFor="dropdown">Choose an option:</label>
       <select
         id="dropdown"
-        value={selectedOption}
-        onChange={handleSelectChange}
+        value='ru'
+        onChange={changeLanguage}
       >
         <option value="">Select language</option>
         <option value="fr">fr</option>
